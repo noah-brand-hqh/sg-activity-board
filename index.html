@@ -277,11 +277,11 @@
 <script>
 const ATTR_COLORS={
   '沙龙':'var(--c-salon)','生态合作活动':'var(--c-eco)','海外考察':'var(--c-tour)',
-  '路演':'var(--c-road)','品鉴':'var(--c-taste)','投教':'var(--c-edu)'
+  '路演':'var(--c-road)','品鉴':'var(--c-taste)','投教':'var(--c-edu)','家族传承':'#B5476B'
 };
 const ATTR_HEX={
   '沙龙':'#5B8DEF','生态合作活动':'#C8A45C','海外考察':'#2E9E5B',
-  '路演':'#E0762B','品鉴':'#A05CC8','投教':'#3FB6C4'
+  '路演':'#E0762B','品鉴':'#A05CC8','投教':'#3FB6C4','家族传承':'#B5476B'
 };
 const STATUS_HEX={
   '筹备中':'#E0A100','已开放报名':'#2E9E5B','已满':'#1B6B3A',
@@ -303,6 +303,7 @@ const EVENTS=[
  {id:11,start:'2026-07-10',days:1,week:'W28',month:'2026-07',weekday:'周五',time:'16:00–18:00',title:'N+ 读书会 · 心安之处：一夜雪漠',attr:'品鉴',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:50,status:'筹备中',note:'与雪漠先生对坐 / 可携配偶 / 保单 review'},
  {id:12,start:'2026-07-15',days:1,week:'W29',month:'2026-07',weekday:'周三',time:'待定',title:'【待定】新加坡国际教育规划分享',attr:'生态合作活动',newClient:'Y',target:'',venue:'私人会所',cap:50,status:'未设置',note:''},
  {id:13,start:'2026-07-22',days:1,week:'W30',month:'2026-07',weekday:'周三',time:'待定',title:'【待定】新加坡会所疗愈沙龙',attr:'生态合作活动',newClient:'Y',target:'',venue:'私人会所',cap:20,status:'未设置',note:''},
+ {id:14,start:'2026-07-04',days:1,week:'W27',month:'2026-07',weekday:'周六',time:'10:00–15:00',title:'从巨流河到南洋 · 全球华人家族研究计划启动礼',attr:'家族传承',newClient:'VIP',target:'',venue:'台北市立美术馆 (TFAM)',cap:null,status:'已开放报名',note:'Noah × SMU / 策展人导览·家族午宴·项目启动圆桌'},
 ];
 
 const fmtMonthCn=m=>({'2026-04':'4月','2026-05':'5月','2026-06':'6月','2026-07':'7月','2026-08':'8月','2026-09':'9月','2026-10':'10月'}[m]||m);
@@ -335,7 +336,7 @@ function countBy(key){const m={};EVENTS.forEach(e=>{m[e[key]]=(m[e[key]]||0)+1})
 /* ---------- donut (attribute) ---------- */
 function renderDonut(){
   const counts=countBy('attr');
-  const order=['生态合作活动','海外考察','品鉴','沙龙','路演','投教'].filter(a=>counts[a]);
+  const order=['生态合作活动','海外考察','品鉴','家族传承','沙龙','路演','投教'].filter(a=>counts[a]);
   const total=EVENTS.length;
   let svg='<circle cx="21" cy="21" r="15.915" fill="none" stroke="#eef0f3" stroke-width="6"/>';
   let off=25; // start at top
@@ -490,7 +491,8 @@ const INVITE_INTRO={
   '生态合作活动':'诺亚 Ark 携手挚友伙伴，为您开启一场跨界相遇。在专业与生活的交汇处，我们希望陪您看见更辽阔的世界，也看见家族财富更长远的可能。',
   '海外考察':'读万卷书，亦行万里路。诚邀您随诺亚 Ark 一同启程，在行走与亲历之间读懂市场脉动与家族传承的深意——这是一段为远见者而设的旅程。',
   '路演':'市场瞬息万变，唯有靠近一线，方能听见真实的声音。我们诚邀您出席本场路演，与一线机构面对面，把握当下值得关注的配置机会。',
-  '品鉴':'于器物、声色与文字之间，邀您慢下来。在喧嚣的时代，我们希望陪您安顿一颗心——财富之外，亦有值得珍藏的从容与美好。'
+  '品鉴':'于器物、声色与文字之间，邀您慢下来。在喧嚣的时代，我们希望陪您安顿一颗心——财富之外，亦有值得珍藏的从容与美好。',
+  '家族传承':'财富可以继承，企业可以传承，而真正定义一个家族的，是它如何记住自己的来处。诚邀您与我们一同，记录跨越百年的家族故事。'
 };
 /* 真实邀请函海报：有图用图，无图回落到文字邀请函（图片缺失也自动回落） */
 const INVITE_IMG={
@@ -499,6 +501,8 @@ const INVITE_IMG={
   7:'invites/ev7.png',        // 走进狮城
   8:'invites/ev8-china.png',  // 大美华夏 · 看见中国（英文版，可替换）
   9:'invites/ev9.jpg',        // 器韵万千 NICEDAY
+  10:'invites/ev10.jpg',      // 《调》ATTUNEMENT 台北展览
+  14:'invites/ev14.jpg',      // 从巨流河到南洋 启动礼（海报待补；缺失自动回落文字）
 };
 /* 活动文案 & 报名方式（可单独切换查看 + 一键复制，方便 RM 转发） */
 const INVITE_COPY={
@@ -537,6 +541,19 @@ const INVITE_COPY={
 整个活动会比较轻松，不需要具备专业品酒知识。主要是希望大家在愉快的氛围中，练习真正能用得上的英文，也认识一些有趣的新朋友。
 
 欢迎您一起来参加 🍷`},
+  14:{text:`🌊 从巨流河到南洋 · 全球华人家族研究计划启动礼
+
+过去一百年，华人经历了前所未有的迁徙——人在迁徙，记忆在迁徙，财富也在迁徙。而比财富更重要的，是一代代被携带、保存与传承的家族故事。
+
+Noah 携手新加坡管理大学（SMU），正式发起《从巨流河到南洋》全球华人家族研究计划。我们诚邀贵家族作为首批参与家族，于《調 ATTUNEMENT》开展之日相聚台北，共同开启这段跨越百年的记录与对话。
+
+🕙 时间 | 2026 年 7 月 4 日（周六）10:00–15:00
+📍 地点 | 台北市立美术馆 Taipei Fine Arts Museum
+
+当日：策展人专场导览《調 ATTUNEMENT》｜全球华人家族午宴｜《从巨流河到南洋》项目启动圆桌——人的迁徙 · 记忆的迁徙 · 财富的迁徙。
+
+财富可以继承，企业可以传承，而真正定义一个家族的，是它如何记住自己的来处。`,
+    signup:`📩 席位有限 · 仅限受邀家族及家族办公室代表 · 敬请扫码登记报名`},
 };
 function openInvite(id){
   const m=document.getElementById('modal');
