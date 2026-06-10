@@ -297,7 +297,7 @@ const EVENTS=[
  {id:5,start:'2026-06-05',days:1,week:'W23',month:'2026-06',weekday:'周五',time:'14:30–16:00',title:'投资日本：三井住友探寻日股投资机会',attr:'路演',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:30,status:'已结束',note:'投教序列第 3 期 / 含 Q&A'},
  {id:6,start:'2026-06-12',days:1,week:'W24',month:'2026-06',weekday:'周五',time:'19:00–22:00',title:'Taste Talk · 走进新加坡 Wine Club — Noah × Lion English VVIP 沙龙',attr:'生态合作活动',newClient:'VIP',target:'',venue:'私人会所',cap:16,status:'已开放报名',note:'闭门 / 客户 + 配偶 + 法律顾问'},
  {id:7,start:'2026-06-16',end:'2026-06-18',days:3,week:'W25',month:'2026-06',weekday:'周二',time:'D1 18:00–21:00 / D2 全天 / D3 上午',title:'走进新加坡 · 第二期（加场）',attr:'海外考察',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:30,status:'已开放报名',note:'Roadshow #1 / 配套尽调材料'},
- {id:8,start:'2026-06-22',end:'2026-06-26',days:5,week:'W26',month:'2026-06',weekday:'周一',time:'09:00–20:00',title:'走进中国 · 看见中国：重新读懂家族的意义',attr:'海外考察',newClient:'Y',target:'',venue:'海外考察（上海 → 山西）',cap:20,status:'已开放报名',note:'从上海资本前沿到山西家族原乡 / 配偶随行'},
+ {id:8,start:'2026-06-21',end:'2026-06-23',days:3,week:'W26',month:'2026-06',weekday:'周日',time:'D1 抵沪 / D2 09:30–20:00 / D3 自由返程',title:'走进上海 · 与诺亚同行（致新加坡品牌伙伴专属邀约）',attr:'海外考察',newClient:'VIP',target:'',venue:'海外考察 · 上海（虹桥香格里拉）',cap:null,status:'已开放报名',note:'Noah × 新加坡品牌伙伴 / 上海诺亚财富中心·吉宝(Keppel)·外滩百年金融·浦江晚宴'},
  {id:9,start:'2026-07-01',days:1,week:'W27',month:'2026-07',weekday:'周三',time:'14:00–16:30',title:'Noah Ark × NiceDay「器韵万千·五感的哲思」品牌展开幕式暨贵宾预览',attr:'品鉴',newClient:'Y',target:'',venue:'ION SG',cap:65,status:'筹备中',note:'投教序列第 4 期'},
  {id:10,start:'2026-07-04',days:1,week:'W27',month:'2026-07',weekday:'周六',time:'10:00–12:00',title:'《调：心境与声景之间》台北市立美术馆展览',attr:'品鉴',newClient:'Y',target:'',venue:'台北市立美术馆',cap:30,status:'筹备中',note:''},
  {id:11,start:'2026-07-10',days:1,week:'W28',month:'2026-07',weekday:'周五',time:'16:00–18:00',title:'N+ 读书会 · 心安之处：一夜雪漠',attr:'品鉴',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:50,status:'筹备中',note:'与雪漠先生对坐 / 可携配偶 / 保单 review'},
@@ -499,7 +499,7 @@ const INVITE_IMG={
   5:'invites/ev5-japan.png',  // 投资日本 · 三井住友
   6:'invites/ev6.jpg',        // Taste Talk Connect
   7:'invites/ev7.png',        // 走进狮城
-  8:'invites/ev8-china.png',  // 大美华夏 · 看见中国（英文版，可替换）
+  8:'invites/ev8.png',        // 走进上海 · 与诺亚同行
   9:'invites/ev9.jpg',        // 器韵万千 NICEDAY
   10:'invites/ev10.jpg',      // 《调》ATTUNEMENT 台北展览
   14:'invites/ev14.jpg',      // 从巨流河到南洋 启动礼（海报待补；缺失自动回落文字）
@@ -512,17 +512,25 @@ const INVITE_COPY={
 
 🫵🏻 走进 Noah Ark 新加坡，谈穿越周期的判断，与同行者一起，把"立足新加坡、配置全球"从一句话，变成可触可感的路径。`,
     signup:`📩 报名：ARK Singapore 客户经理`},
-  8:{text:`这不是一次文化旅行，
-而是一场连接根脉、对话时代的"中国理解之旅"。
+  8:{text:`🏙 走进上海 · 与诺亚同行
+致新加坡品牌伙伴的专属邀约 · 6.21–6.23
 
-在上海，触碰世界级科创的跳动脉搏；
-在山西，寻回华夏文明不息的家族火种。
+三天，从陆家嘴的灯火到外滩的廊柱，从一桌好菜到一席江风。我们以诺亚的方式，邀新加坡的伙伴走进上海——看诺亚如何承接全球华人家族，也看这座城市的财富，如何从过去走向未来。
 
-穿越千年风尘，在晋商精神的底色里，
-感悟守护家族财富与信仰的终极之道。
+【Day 1 · 6月21日｜抵沪】
+接风 · 安顿　入住虹桥香格里拉盛贸酒店
 
-一次同行，让我们在时代的坐标中，
-看清来路，洞察未来。`},
+【Day 2 · 6月22日｜一日看懂诺亚】
+09:30–12:00　走进上海诺亚财富中心（品牌顾问闭门赋能 · 唐卡艺术展 · N+ 宝库）
+12:30–14:00　N+ 私享午宴
+14:30–15:30　走进上海吉宝总部（Keppel）
+16:00–17:30　外滩 · 百年金融之行
+18:00–20:00　浦江晚宴
+21:00 起　返回虹桥香格里拉盛贸酒店休憩
+
+【Day 3 · 6月23日｜自由返程】
+睡到自然醒——把上海的余味带回新加坡。`,
+    signup:`📩 凭邀请同行 · 仅限受邀新加坡品牌伙伴`},
   6:{text:`Hi，邀请您参加我们在 6 月 12 日（周五）晚上 7:00 举办的 Wine Tasting 英文品酒体验活动。
 
 📍 地点：69 Belmont Rd, Singapore 269901
