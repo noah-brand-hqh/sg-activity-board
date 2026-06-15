@@ -308,7 +308,7 @@ const STATUS_HEX={
   '筹备中':'#E0A100','已开放报名':'#2E9E5B','已满':'#1B6B3A',
   '已结束':'#9AA0A6','取消':'#D14343','未设置':'#B6BCC6'
 };
-const REGION_FLAG={'新加坡':'🇸🇬','中国上海':'🇨🇳','中国大陆':'🇨🇳','台北':'🇨🇳','中国台湾':'🇨🇳','中国香港':'🇭🇰','日本':'🇯🇵','美国':'🇺🇸','马来西亚':'🇲🇾','泰国':'🇹🇭'};
+const REGION_FLAG={'新加坡':'🇸🇬','中国上海':'🇨🇳','中国大陆':'🇨🇳','TAI':'🇨🇳','中国台湾':'🇨🇳','中国香港':'🇭🇰','日本':'🇯🇵','美国':'🇺🇸','马来西亚':'🇲🇾','泰国':'🇹🇭'};
 function regionOf(e){ return e.region || '新加坡'; }
 const MONTHS=['2026-05','2026-06','2026-07','2026-08','2026-09','2026-10'];
 
@@ -325,8 +325,8 @@ const EVENTS=[
  {id:10,start:'2026-06-19',days:1,week:'W25',month:'2026-06',weekday:'周五',time:'16:00–21:00',region:'新加坡',title:'【N+ 端午雅集 · 一江之水 · 万里同舟】Noah ARK Singapore · 2026 端午私席',attr:'品鉴',newClient:'VIP',target:'',venue:'私人会所',cap:20,status:'已开放报名',note:'限 9 组家庭 · 全家欢迎含孩子'},
  {id:11,start:'2026-06-21',end:'2026-06-23',days:3,week:'W25',month:'2026-06',weekday:'周日',time:'09:00–20:00',region:'中国上海',title:'「Overseas Study」看见中国 · 重新读懂家族的意义',attr:'海外考察',newClient:'Y',target:'',venue:'上海 · 海外考察',cap:15,status:'已开放报名',note:''},
  {id:12,start:'2026-07-01',days:1,week:'W27',month:'2026-07',weekday:'周三',time:'14:00–16:30',region:'新加坡',title:'「Lifestyle」Noah Ark × NiceDay「器韵万千·五感的哲思」品牌展开幕式暨贵宾预览',attr:'品鉴',newClient:'Y',target:'',venue:'ION Orchard（SG）',cap:65,status:'筹备中',note:''},
- {id:13,start:'2026-07-03',days:1,week:'W27',month:'2026-07',weekday:'周五',time:'10:00–12:00',region:'台北',title:'「Lifestyle」《调：心境与声景之间》台北市立美术馆展览',attr:'品鉴',newClient:'Y',target:'',venue:'台北市立美术馆',cap:30,status:'已开放报名',note:''},
- {id:14,start:'2026-07-03',days:1,week:'W27',month:'2026-07',weekday:'周五',time:'10:00–15:00',region:'台北',title:'从巨流河到南洋 · 全球华人家族研究计划启动礼',attr:'家族传承',newClient:'VIP',target:'',venue:'台北市立美术馆 (TFAM)',cap:null,status:'已开放报名',note:'Noah × SMU / 策展人导览·家族午宴·项目启动圆桌（表外保留）'},
+ {id:13,start:'2026-07-03',days:1,week:'W27',month:'2026-07',weekday:'周五',time:'10:00–12:00',region:'TAI',title:'「Lifestyle」《调：心境与声景之间》台北市立美术馆展览',attr:'品鉴',newClient:'Y',target:'',venue:'台北市立美术馆',cap:30,status:'已开放报名',note:''},
+ {id:14,start:'2026-07-03',days:1,week:'W27',month:'2026-07',weekday:'周五',time:'10:00–15:00',region:'TAI',title:'从巨流河到南洋 · 全球华人家族研究计划启动礼',attr:'家族传承',newClient:'VIP',target:'',venue:'台北市立美术馆 (TFAM)',cap:null,status:'已开放报名',note:'Noah × SMU / 策展人导览·家族午宴·项目启动圆桌（表外保留）'},
  {id:15,start:'2026-07-10',days:1,week:'W28',month:'2026-07',weekday:'周五',time:'16:00–18:00',region:'新加坡',title:'「生态合作」心安之处 · 一夜雪漠 · 与雪漠先生对坐',attr:'品鉴',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:50,status:'已开放报名',note:''},
  {id:16,start:'2026-07-18',end:'2026-07-19',days:2,week:'W29',month:'2026-07',weekday:'周六',time:'待定',region:'新加坡',title:'「Lifestyle」世界杯观赛',attr:'生态合作活动',newClient:'Y',target:'',venue:'新加坡 · 观赛',cap:30,status:'筹备中',note:''},
  {id:17,start:'2026-07-20',days:1,week:'W30',month:'2026-07',weekday:'周一',time:'14:00–18:00',region:'美国',title:'「Lifestyle」NOAH × Grace Chen 2026 早秋高定 · 硅谷高定私享沙龙',attr:'生态合作活动',newClient:'Y',target:'',venue:'硅谷 · 私享沙龙',cap:20,status:'筹备中',note:''},
