@@ -303,7 +303,7 @@ const EVENTS=[
  {id:12,start:'2026-07-15',days:1,week:'W29',month:'2026-07',weekday:'周三',time:'待定',title:'【待定】新加坡国际教育规划分享',attr:'生态合作活动',newClient:'Y',target:'',venue:'私人会所',cap:50,status:'未设置',note:''},
  {id:13,start:'2026-07-22',days:1,week:'W30',month:'2026-07',weekday:'周三',time:'待定',title:'【待定】新加坡会所疗愈沙龙',attr:'生态合作活动',newClient:'Y',target:'',venue:'私人会所',cap:20,status:'未设置',note:''},
  {id:14,start:'2026-07-04',days:1,week:'W27',month:'2026-07',weekday:'周六',time:'10:00–15:00',title:'从巨流河到南洋 · 全球华人家族研究计划启动礼',attr:'家族传承',newClient:'VIP',target:'',venue:'台北市立美术馆 (TFAM)',cap:null,status:'已开放报名',note:'Noah × SMU / 策展人导览·家族午宴·项目启动圆桌'},
- {id:15,start:'2026-06-19',days:1,week:'W25',month:'2026-06',weekday:'周五',time:'待定',title:'【N+ 端午雅集 · 一江之水 · 万里同舟】Noah ARK Singapore · 2026 端午私席',attr:'品鉴',newClient:'Y',target:'',venue:'新加坡',cap:null,status:'已开放报名',note:'限量 9 组家庭 · 端午私席'},
+ {id:15,start:'2026-06-19',days:1,week:'W25',month:'2026-06',weekday:'周五',time:'16:00–21:00',title:'【N+ 端午雅集 · 一江之水 · 万里同舟】Noah ARK Singapore · 2026 端午私席',attr:'品鉴',newClient:'Y',target:'',venue:'Noah ARK Singapore · N+ 会所',cap:null,status:'已开放报名',note:'限 9 组家庭 · 全家欢迎含孩子 · 屈原故事会 + 亲子裹粽 workshop'},
 ];
 
 const fmtMonthCn=m=>({'2026-04':'4月','2026-05':'5月','2026-06':'6月','2026-07':'7月','2026-08':'8月','2026-09':'9月','2026-10':'10月'}[m]||m);
@@ -561,6 +561,38 @@ Noah 携手新加坡管理大学（SMU），正式发起《从巨流河到南洋
 
 财富可以继承，企业可以传承，而真正定义一个家族的，是它如何记住自己的来处。`,
     signup:`📩 席位有限 · 仅限受邀家族及家族办公室代表 · 敬请扫码登记报名`},
+  15:{text:`【N+ 端午雅集 · 一江之水 · 万里同舟】
+Noah ARK Singapore · 2026 端午私席
+
+每年五月初五，江南老家的母亲会一早起来，把粽叶在井水里浸到发亮，把糯米、咸蛋黄、火腿肉一颗颗码进绿色的怀抱里。那是很多年前的事了。
+后来，我们一个个走出那个夏天的厨房，走过香港、上海、东京、纽约，走到新加坡的赤道与四季无声的暖风里。
+
+孩子们慢慢长大了。他们说着流利的英文、Singlish，知道 Vesak、Deepavali、Hari Raya Puasa，但或许还没真正听过——一个关于"屈原"的故事；一条叫"汨罗"的江；一只粽子，为什么要用绿色的叶子裹起来。
+
+2026 年 6 月 19 日（农历五月初五）端午当日的傍晚，Noah ARK Singapore 邀请您和家人回到 N+ 会所，过一个有粽香、有故事、有同舟人的端午节。
+
+我们准备了——
+▫ 一位老师，为孩子们讲屈原、讲《离骚》、讲一江之水如何流过两千三百年
+▫ 一场亲子裹粽 workshop（不论会不会，糯米和粽叶比答案更重要）
+让"五月初五"的傍晚慢下来。
+
+▫ 这场端午，为这样的家庭而设——
+· 有孩子在新加坡国际或本地学校就读、希望他们听得懂中文里温柔故事的家庭
+· 刚开启狮城新生活、想让孩子在新土地上记得旧节气的家庭
+· 老移民家庭，想和老朋友再过一个像家一样的中国节
+· 三代同堂的家族，希望长辈、孩子、父母三辈人在异乡共度一个完整的节日
+
+▫ 一江之水，万里同舟
+诺亚团队相信——财富的传承，从来不只是数字的递交。更是一只粽子的叶香、一段古琴的余韵、一个被认真讲过的故事，在两代人、三代人之间，完成的那次安静的交付。
+我们走了很远。但有些东西，始终在每个五月初五的傍晚，等着我们回头。
+
+📅 时间 | 2026 年 6 月 19 日（周五 · 农历五月初五）16:00–21:00
+📍 地点 | Noah ARK Singapore · N+ 会所
+🎟 席位 | 限 9 组家庭 · 全家欢迎 · 含孩子
+
+诺亚 懂金融，更懂华人。
+NOAH — In Finance, In Heritage.`,
+    signup:`🔗 报名 | 请联系您的诺亚 RM 或扫码登记`},
 };
 function openInvite(id){
   const m=document.getElementById('modal');
@@ -579,6 +611,22 @@ function openInvite(id){
         ${c.signup?`<div class="copy-signup">${c.signup}</div>`:''}
         <button class="copybtn" onclick="copyInviteText(${id},this)">📋 复制文案到剪贴板</button>
       </div>`:''}
+    </div>`;
+  } else if(INVITE_COPY[id]){
+    const c=INVITE_COPY[id];
+    m.innerHTML=`<div class="invite copy-only" role="dialog" aria-modal="true">
+      <button class="iv-close" aria-label="关闭">×</button>
+      <div class="iv-band" style="border-top:4px solid ${ATTR_HEX[e.attr]}">
+        <div class="iv-brand">ARK&nbsp;WEALTH&nbsp;·&nbsp;SINGAPORE</div>
+        <div class="iv-kicker">诚 挚 邀 请　·　INVITATION</div>
+        <div class="iv-attr" style="background:${ATTR_HEX[e.attr]}">${e.attr}</div>
+      </div>
+      <div class="iv-pane copy on">
+        <h3 class="iv-title" style="margin-bottom:14px">${e.title}</h3>
+        <div class="copy-text">${c.text.replace(/</g,'&lt;')}</div>
+        ${c.signup?`<div class="copy-signup">${c.signup}</div>`:''}
+        <button class="copybtn" onclick="copyInviteText(${id},this)">📋 复制文案到剪贴板</button>
+      </div>
     </div>`;
   } else {
     m.innerHTML=buildTextInvite(id);
