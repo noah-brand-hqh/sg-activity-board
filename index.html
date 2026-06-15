@@ -413,16 +413,18 @@ document.getElementById('toolbar').addEventListener('click',e=>{
 });
 
 /* ---------- timeline ---------- */
-const isClosed=e=>e.status==='已结束'||e.status==='取消';
+const _td=new Date();
+const TODAY=`${_td.getFullYear()}-${String(_td.getMonth()+1).padStart(2,'0')}-${String(_td.getDate()).padStart(2,'0')}`;
+const isPast=e=>(e.end||e.start) < TODAY; // 结束日期早于今天 = 已过期
 function renderTimeline(){
   const list=EVENTS.filter(e=>(!fAttr||e.attr===fAttr)&&(!fStatus||e.status===fStatus));
   const tl=document.getElementById('timeline');
   if(!list.length){tl.innerHTML='<div class="empty-note">当前筛选条件下没有活动</div>';return;}
-  const active=list.filter(e=>!isClosed(e)).sort((a,b)=>a.start.localeCompare(b.start));
-  const closed=list.filter(isClosed).sort((a,b)=>a.start.localeCompare(b.start));
+  const upcoming=list.filter(e=>!isPast(e)).sort((a,b)=>a.start.localeCompare(b.start));
+  const past=list.filter(isPast).sort((a,b)=>a.start.localeCompare(b.start));
   let html='';
-  if(active.length) html+=section('进行中 / 即将开展',active,false);
-  if(closed.length) html+=section('已结束',closed,true);
+  if(upcoming.length) html+=section('进行中 / 即将开展',upcoming,false);
+  if(past.length) html+=section('已过期',past,true);
   tl.innerHTML=html;
 }
 function section(label,evs,dim){
