@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NOAH ARK Wealth · 新加坡活动看板</title>
+<script src="https://cdn.jsdelivr.net/npm/twemoji@14.0.2/dist/twemoji.min.js" crossorigin="anonymous"></script>
 <style>
   :root{
     --navy:#0B1F3A; --navy2:#13294B; --ink:#1c2733;
@@ -18,6 +19,7 @@
     --s-closed:#9AA0A6; --s-cancel:#D14343; --s-na:#B6BCC6;
   }
   *{box-sizing:border-box;margin:0;padding:0}
+  img.emoji{height:1em;width:1em;vertical-align:-.12em;margin:0 .04em}
   body{font-family:"Segoe UI","PingFang SC","Microsoft YaHei",-apple-system,sans-serif;
     background:var(--ivory);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
   .wrap{max-width:1240px;margin:0 auto;padding:0 24px 64px}
@@ -768,6 +770,9 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeInvite();});
 /* init */
 document.getElementById('genDate').textContent='⏱ 更新于 '+TODAY;
 renderKPIs();renderDonut();renderMonthBars();renderStatus();renderOpenBars();renderChips();renderRegionBar();renderTimeline();
+/* 国旗等 emoji 用 Twemoji 渲染为图片(兼容 Windows) */
+let _obs;function twe(){if(!window.twemoji)return;_obs&&_obs.disconnect();twemoji.parse(document.body,{base:'https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/',folder:'svg',ext:'.svg'});_obs&&_obs.observe(document.body,{childList:true,subtree:true});}
+_obs=new MutationObserver(()=>{clearTimeout(window._tt);window._tt=setTimeout(twe,40);});_obs.observe(document.body,{childList:true,subtree:true});twe();
 </script>
 </body>
 </html>
