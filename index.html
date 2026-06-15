@@ -188,6 +188,7 @@
   .sec-h{font-size:13px;font-weight:800;letter-spacing:.5px;color:var(--navy);margin:6px 0 16px;
     display:flex;align-items:center;gap:10px}
   .sec-h::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--s-open)}
+  .tl-sec.tbd .sec-h::before{background:var(--s-plan)}
   .sec-h::after{content:"";flex:1;height:1px;background:var(--line)}
   .tl-sec.dim .sec-h{color:var(--muted)}
   .tl-sec.dim .sec-h::before{background:var(--s-closed)}
@@ -323,7 +324,7 @@ const EVENTS=[
  {id:11,start:'2026-06-21',end:'2026-06-23',days:3,week:'W25',month:'2026-06',weekday:'周日',time:'09:00–20:00',region:'中国上海',title:'「Overseas Study」看见中国 · 重新读懂家族的意义',attr:'海外考察',newClient:'Y',target:'',venue:'上海 · 海外考察',cap:15,status:'已开放报名',note:''},
  {id:12,start:'2026-07-01',days:1,week:'W27',month:'2026-07',weekday:'周三',time:'14:00–16:30',region:'新加坡',title:'「Lifestyle」Noah Ark × NiceDay「器韵万千·五感的哲思」品牌展开幕式暨贵宾预览',attr:'品鉴',newClient:'Y',target:'',venue:'ION Orchard（SG）',cap:65,status:'筹备中',note:''},
  {id:13,start:'2026-07-03',days:1,week:'W27',month:'2026-07',weekday:'周五',time:'10:00–12:00',region:'台北',title:'「Lifestyle」《调：心境与声景之间》台北市立美术馆展览',attr:'品鉴',newClient:'Y',target:'',venue:'台北市立美术馆',cap:30,status:'已开放报名',note:''},
- {id:14,start:'2026-07-04',days:1,week:'W27',month:'2026-07',weekday:'周六',time:'10:00–15:00',region:'台北',title:'从巨流河到南洋 · 全球华人家族研究计划启动礼',attr:'家族传承',newClient:'VIP',target:'',venue:'台北市立美术馆 (TFAM)',cap:null,status:'已开放报名',note:'Noah × SMU / 策展人导览·家族午宴·项目启动圆桌（表外保留）'},
+ {id:14,start:'2026-07-03',days:1,week:'W27',month:'2026-07',weekday:'周五',time:'10:00–15:00',region:'台北',title:'从巨流河到南洋 · 全球华人家族研究计划启动礼',attr:'家族传承',newClient:'VIP',target:'',venue:'台北市立美术馆 (TFAM)',cap:null,status:'已开放报名',note:'Noah × SMU / 策展人导览·家族午宴·项目启动圆桌（表外保留）'},
  {id:15,start:'2026-07-10',days:1,week:'W28',month:'2026-07',weekday:'周五',time:'16:00–18:00',region:'新加坡',title:'「生态合作」心安之处 · 一夜雪漠 · 与雪漠先生对坐',attr:'品鉴',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:50,status:'已开放报名',note:''},
  {id:16,start:'2026-07-18',end:'2026-07-19',days:2,week:'W29',month:'2026-07',weekday:'周六',time:'待定',region:'新加坡',title:'「Lifestyle」世界杯观赛',attr:'生态合作活动',newClient:'Y',target:'',venue:'新加坡 · 观赛',cap:30,status:'筹备中',note:''},
  {id:17,start:'2026-07-20',days:1,week:'W30',month:'2026-07',weekday:'周一',time:'14:00–18:00',region:'美国',title:'「Lifestyle」NOAH × Grace Chen 2026 早秋高定 · 硅谷高定私享沙龙',attr:'生态合作活动',newClient:'Y',target:'',venue:'硅谷 · 私享沙龙',cap:20,status:'筹备中',note:''},
@@ -332,6 +333,10 @@ const EVENTS=[
  {id:20,start:'2026-08-09',days:1,week:'W32',month:'2026-08',weekday:'周日',time:'16:00–20:00',region:'新加坡',title:'新加坡国庆庆典',attr:'生态合作活动',newClient:'Y',target:'',venue:'新加坡 · 国庆庆典',cap:30,status:'筹备中',note:''},
  {id:21,start:'2026-08-27',days:1,week:'W35',month:'2026-08',weekday:'周四',time:'16:00–20:00',region:'新加坡',title:'ESS 晚宴',attr:'生态合作活动',newClient:'Y',target:'',venue:'新加坡',cap:30,status:'筹备中',note:''},
  {id:22,start:'2026-10-09',end:'2026-10-11',days:3,week:'W41',month:'2026-10',weekday:'周五',time:'待定',region:'新加坡',title:'「Lifestyle」F1 观赛',attr:'品鉴',newClient:'Y',target:'',venue:'新加坡 · F1 观赛',cap:null,status:'筹备中',note:''},
+ {id:23,start:'',days:1,week:'',month:'',weekday:'',time:'拟 7 月底 / 8 月初',region:'日本',title:'「Overseas Study」走进日本',attr:'海外考察',newClient:'Y',target:'',venue:'日本',cap:null,status:'筹备中',note:'日期未定'},
+ {id:24,start:'',days:1,week:'',month:'',weekday:'',time:'待定',region:'新加坡',title:'「N+读书会」霸王茶姬 · 茶艺',attr:'品鉴',newClient:'Y',target:'',venue:'新加坡',cap:null,status:'筹备中',note:'日期未定'},
+ {id:25,start:'',days:1,week:'',month:'',weekday:'',time:'待定',region:'新加坡',title:'【待定】新加坡国际教育规划分享',attr:'生态合作活动',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:50,status:'筹备中',note:'日期未定'},
+ {id:26,start:'',days:1,week:'',month:'',weekday:'',time:'待定',region:'新加坡',title:'【待定】新加坡会所疗愈沙龙',attr:'生态合作活动',newClient:'Y',target:'',venue:'私人会所',cap:20,status:'筹备中',note:'日期未定'},
 ];
 
 const fmtMonthCn=m=>({'2026-04':'4月','2026-05':'5月','2026-06':'6月','2026-07':'7月','2026-08':'8月','2026-09':'9月','2026-10':'10月'}[m]||m);
@@ -477,12 +482,18 @@ function renderTimeline(){
   const list=EVENTS.filter(e=>(!fAttr||e.attr===fAttr)&&(!fStatus||e.status===fStatus)&&(!fRegion||regionOf(e)===fRegion));
   const tl=document.getElementById('timeline');
   if(!list.length){tl.innerHTML='<div class="empty-note">当前筛选条件下没有活动</div>';return;}
-  const upcoming=list.filter(e=>!isPast(e)).sort((a,b)=>a.start.localeCompare(b.start));
-  const past=list.filter(isPast).sort((a,b)=>a.start.localeCompare(b.start));
+  const undated=list.filter(e=>!e.start);
+  const dated=list.filter(e=>e.start);
+  const upcoming=dated.filter(e=>!isPast(e)).sort((a,b)=>a.start.localeCompare(b.start));
+  const past=dated.filter(isPast).sort((a,b)=>a.start.localeCompare(b.start));
   let html='';
   if(upcoming.length) html+=section('进行中 / 即将开展',upcoming,false);
+  if(undated.length) html+=sectionFlat('待定 / 未定档',undated);
   if(past.length) html+=section('已过期',past,true);
   tl.innerHTML=html;
+}
+function sectionFlat(label,evs){
+  return `<div class="tl-sec tbd"><div class="sec-h">${label} · ${evs.length} 场</div>${evs.map(evCard).join('')}</div>`;
 }
 function section(label,evs,dim){
   const months=[...new Set(evs.map(e=>e.month))]; // already date-sorted
@@ -513,16 +524,17 @@ document.getElementById('timeline').addEventListener('click',e=>{
   if(card) openInvite(+card.dataset.id);
 });
 function evCard(e){
-  const dateRange=e.end?`${dayOf(e.start)}–${dayOf(e.end)}`:dayOf(e.start);
+  const undated=!e.start;
+  const dateRange=undated?'待定':(e.end?`${dayOf(e.start)}–${dayOf(e.end)}`:dayOf(e.start));
   const newcTag=e.newClient==='VIP'
     ? '<span class="tag vip">VIP 仅限邀请</span>'
     : '<span class="tag newc">开放新客</span>';
   return `<div class="ev" data-id="${e.id}">
     <div class="date">
       <span class="attrbar" style="background:${ATTR_HEX[e.attr]}"></span>
-      <span class="d">${dateRange}</span>
-      <span class="mo">${fmtMonthCn(e.month)}</span>
-      <span class="wd">${e.weekday}</span>
+      <span class="d"${undated?' style="font-size:13px"':''}>${dateRange}</span>
+      <span class="mo">${undated?'未定档':fmtMonthCn(e.month)}</span>
+      <span class="wd">${e.weekday||''}</span>
     </div>
     <div class="body">
       <span class="status" style="background:${STATUS_HEX[e.status]}">${e.status}</span>
