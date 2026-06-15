@@ -37,8 +37,22 @@
   .scroll{position:absolute;right:-30px;top:-20px;font-size:240px;line-height:1;
     color:rgba(200,164,92,.07);font-family:Georgia,serif;z-index:1;user-select:none}
 
+  /* 即将举办活动地点 */
+  .region-bar{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 20px;
+    margin:-26px 0 20px;position:relative;z-index:3;box-shadow:0 6px 20px rgba(11,31,58,.06)}
+  .rb-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px}
+  .rb-cards{display:flex;flex-wrap:wrap;gap:12px}
+  .rb-card{display:flex;align-items:center;gap:11px;border:1px solid var(--line);border-radius:12px;
+    padding:10px 16px;cursor:pointer;transition:.15s;background:#fbfaf7;min-width:158px}
+  .rb-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .rb-card.on{border-color:var(--navy);background:var(--navy)}
+  .rb-card.on .rb-name,.rb-card.on .rb-meta{color:#fff}
+  .rb-flag{font-size:26px;line-height:1}
+  .rb-name{font-size:15px;font-weight:700;color:var(--navy)}
+  .rb-meta{font-size:11.5px;color:var(--muted);margin-top:2px}
+
   /* KPI */
-  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin:-26px 0 26px;position:relative;z-index:3}
+  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin:0 0 26px;position:relative;z-index:2}
   .kpi{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;
     box-shadow:0 6px 20px rgba(11,31,58,.06)}
   .kpi .n{font-size:30px;font-weight:800;color:var(--navy);letter-spacing:-.5px}
@@ -226,6 +240,9 @@
 </header>
 
 <div class="wrap">
+  <!-- 即将举办活动地点 -->
+  <div class="region-bar" id="regionBar"></div>
+
   <!-- KPIs -->
   <div class="kpis" id="kpis"></div>
 
@@ -235,6 +252,7 @@
     <div class="toolbar" id="toolbar">
       <span class="tt">属性</span><span id="attrChips"></span>
       <span class="tt" style="margin-left:8px">状态</span><span id="statusChips"></span>
+      <span class="tt" style="margin-left:8px">地区</span><span id="regionChips"></span>
     </div>
     <div id="timeline"></div>
   </div>
@@ -287,6 +305,16 @@ const STATUS_HEX={
   '筹备中':'#E0A100','已开放报名':'#2E9E5B','已满':'#1B6B3A',
   '已结束':'#9AA0A6','取消':'#D14343','未设置':'#B6BCC6'
 };
+const REGION_FLAG={'新加坡':'🇸🇬','中国大陆':'🇨🇳','中国香港':'🇭🇰','中国台湾':'🇨🇳','日本':'🇯🇵','美国':'🇺🇸','马来西亚':'🇲🇾','泰国':'🇹🇭'};
+function regionOf(e){
+  const v=e.venue||'';
+  if(/上海|北京|深圳|广州|杭州|苏州|大陆/.test(v)) return '中国大陆';
+  if(/台北|台中|高雄|台湾/.test(v)) return '中国台湾';
+  if(/香港|HK/.test(v)) return '中国香港';
+  if(/日本|东京|大阪|京都|Japan|Tokyo/i.test(v)) return '日本';
+  if(/美国|纽约|旧金山|US|New York/i.test(v)) return '美国';
+  return '新加坡';
+}
 const MONTHS=['2026-05','2026-06','2026-07','2026-08','2026-09','2026-10'];
 
 const EVENTS=[
@@ -394,7 +422,7 @@ function renderOpenBars(){
 }
 
 /* ---------- chips ---------- */
-let fAttr=null,fStatus=null;
+let fAttr=null,fStatus=null,fRegion=null;
 function renderChips(){
   const attrs=[...new Set(EVENTS.map(e=>e.attr))];
   const stats=['已结束','已开放报名','筹备中','未设置'].filter(s=>EVENTS.some(e=>e.status===s));
@@ -404,12 +432,41 @@ function renderChips(){
   document.getElementById('statusChips').innerHTML=
     `<span class="chip ${!fStatus?'on':''}" data-t="status" data-v="">全部</span>`+
     stats.map(s=>`<span class="chip ${fStatus===s?'on':''}" data-t="status" data-v="${s}">${s}</span>`).join('');
+  const regions=[...new Set(EVENTS.map(e=>regionOf(e)))];
+  document.getElementById('regionChips').innerHTML=
+    `<span class="chip ${!fRegion?'on':''}" data-t="region" data-v="">全部</span>`+
+    regions.map(r=>`<span class="chip ${fRegion===r?'on':''}" data-t="region" data-v="${r}">${REGION_FLAG[r]||'📍'} ${r}</span>`).join('');
 }
 document.getElementById('toolbar').addEventListener('click',e=>{
   const c=e.target.closest('.chip'); if(!c)return;
   const t=c.dataset.t,v=c.dataset.v||null;
-  if(t==='attr')fAttr=v; else fStatus=v;
-  renderChips(); renderTimeline();
+  if(t==='attr')fAttr=v; else if(t==='status')fStatus=v; else if(t==='region')fRegion=v;
+  renderChips(); renderRegionBar(); renderTimeline();
+});
+/* ---------- region bar：即将举办活动地点 ---------- */
+function renderRegionBar(){
+  const el=document.getElementById('regionBar'); if(!el)return;
+  const up=EVENTS.filter(e=>!isPast(e));
+  const map={};
+  up.forEach(e=>{const r=regionOf(e);(map[r]=map[r]||[]).push(e);});
+  const regions=Object.keys(map).sort((a,b)=>map[b].length-map[a].length);
+  if(!regions.length){el.style.display='none';return;}
+  el.style.display='';
+  el.innerHTML=`<div class="rb-title">📍 即将举办 · 活动地点</div><div class="rb-cards">`+
+    regions.map(r=>{
+      const evs=map[r].sort((a,b)=>a.start.localeCompare(b.start));
+      const nd=evs[0].start.slice(5).replace('-','/');
+      return `<div class="rb-card ${fRegion===r?'on':''}" data-region="${r}">
+        <div class="rb-flag">${REGION_FLAG[r]||'📍'}</div>
+        <div class="rb-info"><div class="rb-name">${r}</div><div class="rb-meta">${evs.length} 场即将举办 · 最近 ${nd}</div></div>
+      </div>`;
+    }).join('')+`</div>`;
+}
+document.getElementById('regionBar').addEventListener('click',e=>{
+  const c=e.target.closest('.rb-card'); if(!c)return;
+  fRegion=(fRegion===c.dataset.region)?null:c.dataset.region;
+  renderChips(); renderRegionBar(); renderTimeline();
+  document.getElementById('timeline').scrollIntoView({behavior:'smooth',block:'start'});
 });
 
 /* ---------- timeline ---------- */
@@ -417,7 +474,7 @@ const _td=new Date();
 const TODAY=`${_td.getFullYear()}-${String(_td.getMonth()+1).padStart(2,'0')}-${String(_td.getDate()).padStart(2,'0')}`;
 const isPast=e=>(e.end||e.start) < TODAY; // 结束日期早于今天 = 已过期
 function renderTimeline(){
-  const list=EVENTS.filter(e=>(!fAttr||e.attr===fAttr)&&(!fStatus||e.status===fStatus));
+  const list=EVENTS.filter(e=>(!fAttr||e.attr===fAttr)&&(!fStatus||e.status===fStatus)&&(!fRegion||regionOf(e)===fRegion));
   const tl=document.getElementById('timeline');
   if(!list.length){tl.innerHTML='<div class="empty-note">当前筛选条件下没有活动</div>';return;}
   const upcoming=list.filter(e=>!isPast(e)).sort((a,b)=>a.start.localeCompare(b.start));
@@ -695,8 +752,8 @@ document.getElementById('modal').addEventListener('click',e=>{
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeInvite();});
 
 /* init */
-document.getElementById('genDate').textContent='⏱ 数据更新 2026-06-08';
-renderKPIs();renderDonut();renderMonthBars();renderStatus();renderOpenBars();renderChips();renderTimeline();
+document.getElementById('genDate').textContent='⏱ 更新于 '+TODAY;
+renderKPIs();renderDonut();renderMonthBars();renderStatus();renderOpenBars();renderChips();renderRegionBar();renderTimeline();
 </script>
 </body>
 </html>
