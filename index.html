@@ -318,20 +318,27 @@ function regionOf(e){
 const MONTHS=['2026-05','2026-06','2026-07','2026-08','2026-09','2026-10'];
 
 const EVENTS=[
- {id:1,start:'2026-04-22',days:1,week:'W17',month:'2026-04',weekday:'周三',time:'14:00–17:00',title:'「投资下午茶」首期雅聚：AI 时代下的子女教育',attr:'沙龙',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:null,status:'已结束',note:''},
- {id:2,start:'2026-05-12',days:1,week:'W20',month:'2026-05',weekday:'周二',time:'14:00–17:00',title:'诺亚 Ark 新加坡 × Glory 同业考察游学沙龙',attr:'生态合作活动',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:null,status:'已结束',note:''},
- {id:3,start:'2026-05-14',end:'2026-05-16',days:3,week:'W20',month:'2026-05',weekday:'周四',time:'D1 18:00–21:00 / D2 全天 / D3 上午',title:'走进新加坡 · 首期',attr:'海外考察',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:30,status:'已结束',note:'重点：2026 H2 配置主线 / 美债转向'},
- {id:4,start:'2026-05-26',days:1,week:'W22',month:'2026-05',weekday:'周二',time:'19:00–21:00',title:'Beyond Festivals · 走进新加坡多元文化 — Noah × Lion English VIP 沙龙',attr:'生态合作活动',newClient:'Y',target:'',venue:'私人会所',cap:20,status:'已结束',note:'限 10 对夫妇 / 配偶随行'},
- {id:5,start:'2026-06-05',days:1,week:'W23',month:'2026-06',weekday:'周五',time:'14:30–16:00',title:'投资日本：三井住友探寻日股投资机会',attr:'路演',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:30,status:'已结束',note:'投教序列第 3 期 / 含 Q&A'},
- {id:6,start:'2026-06-12',days:1,week:'W24',month:'2026-06',weekday:'周五',time:'19:00–22:00',title:'Taste Talk · 走进新加坡 Wine Club — Noah × Lion English VVIP 沙龙',attr:'生态合作活动',newClient:'VIP',target:'',venue:'私人会所',cap:16,status:'已开放报名',note:'闭门 / 客户 + 配偶 + 法律顾问'},
- {id:7,start:'2026-06-16',end:'2026-06-18',days:3,week:'W25',month:'2026-06',weekday:'周二',time:'D1 18:00–21:00 / D2 全天 / D3 上午',title:'走进新加坡 · 第二期（加场）',attr:'海外考察',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:30,status:'已开放报名',note:'Roadshow #1 / 配套尽调材料'},
- {id:8,start:'2026-06-21',end:'2026-06-23',days:3,week:'W26',month:'2026-06',weekday:'周日',time:'D1 抵沪 / D2 09:30–20:00 / D3 自由返程',title:'走进上海 · 与诺亚同行（致新加坡品牌伙伴专属邀约）',attr:'海外考察',newClient:'VIP',target:'',venue:'海外考察 · 上海（虹桥香格里拉）',cap:null,status:'已开放报名',note:'Noah × 新加坡品牌伙伴 / 上海诺亚财富中心·吉宝(Keppel)·外滩百年金融·浦江晚宴'},
- {id:9,start:'2026-07-01',days:1,week:'W27',month:'2026-07',weekday:'周三',time:'14:00–16:30',title:'Noah Ark × NiceDay「器韵万千·五感的哲思」品牌展开幕式暨贵宾预览',attr:'品鉴',newClient:'Y',target:'',venue:'ION SG',cap:65,status:'筹备中',note:'投教序列第 4 期'},
- {id:11,start:'2026-07-10',days:1,week:'W28',month:'2026-07',weekday:'周五',time:'16:00–18:00',title:'N+ 读书会 · 心安之处：一夜雪漠',attr:'品鉴',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:50,status:'筹备中',note:'与雪漠先生对坐 / 可携配偶 / 保单 review'},
- {id:12,start:'2026-07-15',days:1,week:'W29',month:'2026-07',weekday:'周三',time:'待定',title:'【待定】新加坡国际教育规划分享',attr:'生态合作活动',newClient:'Y',target:'',venue:'私人会所',cap:50,status:'未设置',note:''},
- {id:13,start:'2026-07-22',days:1,week:'W30',month:'2026-07',weekday:'周三',time:'待定',title:'【待定】新加坡会所疗愈沙龙',attr:'生态合作活动',newClient:'Y',target:'',venue:'私人会所',cap:20,status:'未设置',note:''},
- {id:14,start:'2026-07-04',days:1,week:'W27',month:'2026-07',weekday:'周六',time:'10:00–15:00',title:'从巨流河到南洋 · 全球华人家族研究计划启动礼',attr:'家族传承',newClient:'VIP',target:'',venue:'台北市立美术馆 (TFAM)',cap:null,status:'已开放报名',note:'Noah × SMU / 策展人导览·家族午宴·项目启动圆桌'},
- {id:15,start:'2026-06-19',days:1,week:'W25',month:'2026-06',weekday:'周五',time:'16:00–21:00',title:'【N+ 端午雅集 · 一江之水 · 万里同舟】Noah ARK Singapore · 2026 端午私席',attr:'品鉴',newClient:'Y',target:'',venue:'Noah ARK Singapore · N+ 会所',cap:null,status:'已开放报名',note:'限 9 组家庭 · 全家欢迎含孩子 · 屈原故事会 + 亲子裹粽 workshop'},
+ {id:1,start:'2026-04-22',days:1,week:'W17',month:'2026-04',weekday:'周三',time:'14:00–17:00',title:'「投资下午茶」首期雅聚 · AI 时代下的子女教育',attr:'沙龙',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:20,status:'已结束',note:''},
+ {id:2,start:'2026-05-12',days:1,week:'W20',month:'2026-05',weekday:'周二',time:'14:00–17:00',title:'诺亚 Ark 新加坡 × Glory · 同业考察游学沙龙',attr:'生态合作活动',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:50,status:'已结束',note:''},
+ {id:3,start:'2026-05-14',end:'2026-05-16',days:3,week:'W20',month:'2026-05',weekday:'周四',time:'D1 18:00–21:00 / D2 全天 / D3 上午',title:'走进新加坡 · 首期',attr:'海外考察',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:30,status:'已结束',note:''},
+ {id:4,start:'2026-05-26',days:1,week:'W22',month:'2026-05',weekday:'周二',time:'19:00–21:00',title:'Beyond Festivals · 走进新加坡多元文化 · Noah × Lion English VIP 沙龙',attr:'生态合作活动',newClient:'Y',target:'',venue:'私人会所',cap:20,status:'已结束',note:''},
+ {id:5,start:'2026-06-05',days:1,week:'W23',month:'2026-06',weekday:'周五',time:'14:30–16:00',title:'投资日本 · 三井住友探寻日股投资机会',attr:'路演',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:15,status:'已结束',note:''},
+ {id:6,start:'2026-06-12',days:1,week:'W24',month:'2026-06',weekday:'周五',time:'19:00–22:00',title:'Taste Talk · 走进新加坡 Wine Club · Noah × Lion English VVIP 沙龙',attr:'生态合作活动',newClient:'VIP',target:'',venue:'私人会所',cap:10,status:'已结束',note:''},
+ {id:7,start:'2026-06-15',days:1,week:'W25',month:'2026-06',weekday:'周一',time:'14:00–17:00',title:'诺亚 Ark 新加坡 × Glory · 同业考察游学沙龙（第二期）',attr:'生态合作活动',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:48,status:'已满',note:''},
+ {id:8,start:'2026-06-16',end:'2026-06-18',days:3,week:'W25',month:'2026-06',weekday:'周二',time:'D1 18:00–21:00 / D2 全天 / D3 上午',title:'走进新加坡 · 第二期',attr:'海外考察',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:25,status:'已开放报名',note:''},
+ {id:9,start:'2026-06-19',days:1,week:'W25',month:'2026-06',weekday:'周五',time:'16:00–21:00',title:'【N+ 端午雅集 · 一江之水 · 万里同舟】Noah ARK Singapore · 2026 端午私席',attr:'品鉴',newClient:'VIP',target:'',venue:'私人会所',cap:20,status:'已开放报名',note:'限 9 组家庭 · 全家欢迎含孩子'},
+ {id:10,start:'2026-06-21',end:'2026-06-23',days:3,week:'W25',month:'2026-06',weekday:'周日',time:'09:00–20:00',title:'看见中国 · 重新读懂家族的意义',attr:'海外考察',newClient:'Y',target:'',venue:'上海 · 海外考察',cap:15,status:'已开放报名',note:''},
+ {id:11,start:'2026-07-01',days:1,week:'W27',month:'2026-07',weekday:'周三',time:'14:00–16:30',title:'Noah Ark × NiceDay「器韵万千·五感的哲思」品牌展开幕式暨贵宾预览',attr:'品鉴',newClient:'Y',target:'',venue:'ION Orchard（SG）',cap:65,status:'筹备中',note:''},
+ {id:12,start:'2026-07-03',days:1,week:'W27',month:'2026-07',weekday:'周五',time:'10:00–12:00',title:'《调：心境与声景之间》台北市立美术馆展览',attr:'品鉴',newClient:'Y',target:'',venue:'台北市立美术馆',cap:30,status:'已开放报名',note:''},
+ {id:13,start:'2026-07-04',days:1,week:'W27',month:'2026-07',weekday:'周六',time:'10:00–15:00',title:'从巨流河到南洋 · 全球华人家族研究计划启动礼',attr:'家族传承',newClient:'VIP',target:'',venue:'台北市立美术馆 (TFAM)',cap:null,status:'已开放报名',note:'Noah × SMU / 策展人导览·家族午宴·项目启动圆桌（表外保留）'},
+ {id:14,start:'2026-07-10',days:1,week:'W28',month:'2026-07',weekday:'周五',time:'16:00–18:00',title:'心安之处 · 一夜雪漠 · 与雪漠先生对坐',attr:'品鉴',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:50,status:'已开放报名',note:''},
+ {id:15,start:'2026-07-15',days:1,week:'W29',month:'2026-07',weekday:'周三',time:'待定',title:'【待定】新加坡国际教育规划分享',attr:'生态合作活动',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:50,status:'筹备中',note:''},
+ {id:16,start:'2026-07-20',days:1,week:'W30',month:'2026-07',weekday:'周一',time:'14:00–18:00',title:'NOAH × Grace Chen 2026 早秋高定 · 硅谷高定私享沙龙',attr:'生态合作活动',newClient:'Y',target:'',venue:'私人会所',cap:20,status:'筹备中',note:''},
+ {id:17,start:'2026-07-22',days:1,week:'W30',month:'2026-07',weekday:'周三',time:'待定',title:'【待定】新加坡会所疗愈沙龙',attr:'生态合作活动',newClient:'Y',target:'',venue:'私人会所',cap:20,status:'筹备中',note:''},
+ {id:18,start:'2026-07-24',days:1,week:'W30',month:'2026-07',weekday:'周五',time:'16:00–19:00',title:'GRACE CHEN 2026 PRE-FALL COUTURE · 《虚度》三部曲 · Noah VIP 专属席位',attr:'生态合作活动',newClient:'Y',target:'',venue:'美术馆 / 展厅',cap:30,status:'筹备中',note:''},
+ {id:19,start:'2026-08-03',days:1,week:'W32',month:'2026-08',weekday:'周一',time:'10:00–19:00',title:'走进美国 · 美国开业',attr:'海外考察',newClient:'Y',target:'',venue:'美国 · 开业活动',cap:30,status:'筹备中',note:''},
+ {id:20,start:'2026-08-09',days:1,week:'W32',month:'2026-08',weekday:'周日',time:'16:00–20:00',title:'新加坡国庆庆典',attr:'生态合作活动',newClient:'Y',target:'',venue:'新加坡 · 国庆庆典',cap:30,status:'筹备中',note:''},
+ {id:21,start:'2026-08-27',days:1,week:'W35',month:'2026-08',weekday:'周四',time:'16:00–20:00',title:'ESS 晚宴',attr:'生态合作活动',newClient:'Y',target:'',venue:'新加坡',cap:30,status:'筹备中',note:''},
 ];
 
 const fmtMonthCn=m=>({'2026-04':'4月','2026-05':'5月','2026-06':'6月','2026-07':'7月','2026-08':'8月','2026-09':'9月','2026-10':'10月'}[m]||m);
@@ -425,7 +432,7 @@ function renderOpenBars(){
 let fAttr=null,fStatus=null,fRegion=null;
 function renderChips(){
   const attrs=[...new Set(EVENTS.map(e=>e.attr))];
-  const stats=['已结束','已开放报名','筹备中','未设置'].filter(s=>EVENTS.some(e=>e.status===s));
+  const stats=['已开放报名','已满','筹备中','已结束','未设置'].filter(s=>EVENTS.some(e=>e.status===s));
   document.getElementById('attrChips').innerHTML=
     `<span class="chip ${!fAttr?'on':''}" data-t="attr" data-v="">全部</span>`+
     attrs.map(a=>`<span class="chip ${fAttr===a?'on':''}" data-t="attr" data-v="${a}">${a}</span>`).join('');
@@ -557,20 +564,21 @@ const INVITE_INTRO={
 const INVITE_IMG={
   5:'invites/ev5-japan.png',  // 投资日本 · 三井住友
   6:'invites/ev6.jpg',        // Taste Talk Connect
-  7:'invites/ev7.png',        // 走进狮城
-  8:'invites/ev8.png',        // 走进上海 · 与诺亚同行
-  9:'invites/ev9.jpg',        // 器韵万千 NICEDAY
-  14:'invites/ev14.jpg',      // 从巨流河到南洋 启动礼（海报待补；缺失自动回落文字）
+  8:'invites/ev7.png',        // 走进新加坡 · 第二期
+  10:'invites/ev8.png',       // 看见中国 / 走进上海
+  11:'invites/ev9.jpg',       // 器韵万千 NICEDAY
+  12:'invites/ev10.jpg',      // 《调》ATTUNEMENT 台北展览
+  13:'invites/ev14.jpg',      // 从巨流河到南洋 启动礼
 };
 /* 活动文案 & 报名方式（可单独切换查看 + 一键复制，方便 RM 转发） */
 const INVITE_COPY={
-  7:{text:`🦁 一座花园之城，读懂全球华人的财富未来。
+  8:{text:`🦁 一座花园之城，读懂全球华人的财富未来。
 
 🇸🇬 新加坡，是全球资本与华人家族共同选择的坐标。6 月 16 日–18 日三天，我们带您走进狮城的肌理：从清晨街巷的书话漫步，到 AI 与资本市场的最前沿；从建国企业的长期主义，到一蔬一饭的人间烟火。
 
 🫵🏻 走进 Noah Ark 新加坡，谈穿越周期的判断，与同行者一起，把"立足新加坡、配置全球"从一句话，变成可触可感的路径。`,
     signup:`📩 报名：ARK Singapore 客户经理`},
-  8:{text:`🏙 走进上海 · 与诺亚同行
+  10:{text:`🏙 走进上海 · 与诺亚同行
 致新加坡品牌伙伴的专属邀约 · 6.21–6.23
 
 三天，从陆家嘴的灯火到外滩的廊柱，从一桌好菜到一席江风。我们以诺亚的方式，邀新加坡的伙伴走进上海——看诺亚如何承接全球华人家族，也看这座城市的财富，如何从过去走向未来。
@@ -607,7 +615,7 @@ const INVITE_COPY={
 整个活动会比较轻松，不需要具备专业品酒知识。主要是希望大家在愉快的氛围中，练习真正能用得上的英文，也认识一些有趣的新朋友。
 
 欢迎您一起来参加 🍷`},
-  14:{text:`🌊 从巨流河到南洋 · 全球华人家族研究计划启动礼
+  13:{text:`🌊 从巨流河到南洋 · 全球华人家族研究计划启动礼
 
 过去一百年，华人经历了前所未有的迁徙——人在迁徙，记忆在迁徙，财富也在迁徙。而比财富更重要的，是一代代被携带、保存与传承的家族故事。
 
@@ -620,7 +628,7 @@ Noah 携手新加坡管理大学（SMU），正式发起《从巨流河到南洋
 
 财富可以继承，企业可以传承，而真正定义一个家族的，是它如何记住自己的来处。`,
     signup:`📩 席位有限 · 仅限受邀家族及家族办公室代表 · 敬请扫码登记报名`},
-  15:{text:`【N+ 端午雅集 · 一江之水 · 万里同舟】
+  9:{text:`【N+ 端午雅集 · 一江之水 · 万里同舟】
 Noah ARK Singapore · 2026 端午私席
 
 每年五月初五，江南老家的母亲会一早起来，把粽叶在井水里浸到发亮，把糯米、咸蛋黄、火腿肉一颗颗码进绿色的怀抱里。那是很多年前的事了。
