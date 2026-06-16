@@ -313,6 +313,7 @@ function regionOf(e){ return e.region || '新加坡'; }
 const MONTHS=['2026-05','2026-06','2026-07','2026-08','2026-09','2026-10'];
 
 const EVENTS=[
+ {id:27,start:'2026-06-18',days:1,week:'W25',month:'2026-06',weekday:'周四',time:'17:00–19:00',region:'新加坡',title:'「N+读书会」走读狮城 · Citywalk 行走读书会',attr:'品鉴',newClient:'Y',target:'',venue:'新加坡 · 集合地点报名后通知',cap:null,status:'已开放报名',note:'主讲 叶孝忠 ·《我星国我街道我散步》《野邻居》作者'},
  {id:1,start:'2026-04-22',days:1,week:'W17',month:'2026-04',weekday:'周三',time:'14:00–17:00',region:'新加坡',title:'「投资下午茶」首期雅聚 · AI 时代下的子女教育',attr:'沙龙',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:20,status:'已结束',note:''},
  {id:2,start:'2026-05-12',days:1,week:'W20',month:'2026-05',weekday:'周二',time:'14:00–17:00',region:'新加坡',title:'「生态合作」诺亚 Ark 新加坡 × Glory · 同业考察游学沙龙',attr:'生态合作活动',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:50,status:'已结束',note:''},
  {id:3,start:'2026-05-14',end:'2026-05-16',days:3,week:'W20',month:'2026-05',weekday:'周四',time:'D1 18:00–21:00 / D2 全天 / D3 上午',region:'新加坡',title:'「Overseas Study」走进新加坡 · 首期',attr:'海外考察',newClient:'Y',target:'',venue:'ARK Singapore Office',cap:30,status:'已结束',note:''},
@@ -580,6 +581,25 @@ const INVITE_IMG={
 };
 /* 活动文案 & 报名方式（可单独切换查看 + 一键复制，方便 RM 转发） */
 const INVITE_COPY={
+  27:{text:`📚🚶 N+读书会 · 走读狮城 Citywalk 行走读书会
+
+一座城市，最好的打开方式，也许不是打卡景点，而是跟着懂它的人，一边行走，一边阅读。
+
+6 月 18 日（周四）17:00–19:00，我们邀请到新加坡知名作家、资深城市观察者 叶孝忠 老师，与大家一起走进狮城街巷。他曾出版《我星国我街道我散步》《野邻居》等作品，用脚步丈量新加坡，也用文字记录这座城市鲜为人知的故事。
+
+🌿 这不是一场普通读书会，而是一场边走边读的城市探索：
+📖 从一本书读懂一座城
+🚶 从一条街认识新加坡
+☕ 从一次漫步结识同频的人
+
+那些每天经过却未曾留意的街角，那些隐藏在建筑、店铺与树影里的历史，那些关于移民、文化与生活方式的故事，都将在这场 Citywalk 中慢慢展开。
+
+📅 6 月 18 日（周四）　⏰ 17:00–19:00
+📍 集合地点报名后通知
+
+名额有限，欢迎热爱阅读、热爱城市、热爱生活的朋友同行。
+城市是一本打开的书。让我们跟随脚步，重新认识新加坡。`,
+    signup:`📩 名额有限 · 报名后通知集合地点`},
   9:{text:`🦁 一座花园之城，读懂全球华人的财富未来。
 
 🇸🇬 新加坡，是全球资本与华人家族共同选择的坐标。6 月 16 日–18 日三天，我们带您走进狮城的肌理：从清晨街巷的书话漫步，到 AI 与资本市场的最前沿；从建国企业的长期主义，到一蔬一饭的人间烟火。
